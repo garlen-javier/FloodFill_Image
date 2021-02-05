@@ -1,3 +1,3 @@
-## [0.0.1] - TODO: Add release date.
+## [0.0.2] - Feb 5 2021.
 
-* Initial release for the floodfill_image package.
+* update readme.

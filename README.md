@@ -6,9 +6,11 @@
 
 Flutter widget that can use paint bucket functionality on the provided image using Queue-Linear Flood Fill Algorithm by J. Dunlap. For more info check out my blog : [Flood Fill in Flutter](https://www.meekcode.com/blog/flood-fill-in-flutter)
 
-Kindly like:thumbsup: the package at [pub dev](https://pub.dev/packages/floodfill_image) or star:star: the repo in [github](https://github.com/garlen-javier/FloodFill_Image) if you find this library useful. :wink:
+Kindly like:+1: the package at [pub dev](https://pub.dev/packages/floodfill_image) or star:star: the repo in [github](https://github.com/garlen-javier/FloodFill_Image) if you find this library useful. :wink:
 
-![demo_dog](https://user-images.githubusercontent.com/71249192/106970202-59d04780-6787-11eb-81ca-2cd000b900d7.gif)
+<p align="center">
+<img src="https://user-images.githubusercontent.com/71249192/106970202-59d04780-6787-11eb-81ca-2cd000b900d7.gif" alt="demo dog gif" width=400 height=600 />
+</p>
 
 ## Usage
 
