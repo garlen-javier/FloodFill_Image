@@ -29,7 +29,7 @@ FloodFillImage(
 | `imageProvider` | ImageProvider | The image to display via ImageProvider. <br>You can use `AssetImage` or `NetworkImage`. |
 | `fillColor` | Color | Color use for filling the area. |
 | `isFillActive` | bool | Set *false* if you want to disable on touch fill function. <br>Default value is *true*. |
-| `avoidColor` | List<Color> | List of color that determines to which `Color` is/are needed to be avoided upon touch. <br>**Note:** Nearest color shade is applied. |
+| `avoidColor` | List\<Color> | List of color that determines to which `Color` is/are needed to be avoided upon touch. <br>**Note:** Nearest color shade is applied. |
 | `tolerance` | int | Set fill value *tolerance* that ranges from 0 to 100. <br>Default value is 8. |
 | `width` | int | Width of the image. Parent widget width will be prioritize if it's provided and less than the image width. |
 | `height` | int | Height of the image. Parent widget height will be prioritize if it's provided and less than the image height. |
