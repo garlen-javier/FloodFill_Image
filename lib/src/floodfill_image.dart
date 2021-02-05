@@ -39,11 +39,11 @@ class FloodFillImage extends StatefulWidget {
   /// <br>It uses [CircularProgressIndicator] by default.
   final Widget loadingWidget;
 
-  /// Callback function that returns an [Image] from *dart:ui* when flood fill starts.
-  final Function(ui.Image) onFloodFillStart;
+  /// Callback function that returns the touch position and an [Image] from *dart:ui* when flood fill starts.
+  final Function(Offset position,ui.Image image) onFloodFillStart;
 
   /// Callback function that returns an [Image] from *dart:ui* when flood fill ended.
-  final Function(ui.Image) onFloodFillEnd;
+  final Function(ui.Image image) onFloodFillEnd;
 
   /// Flutter widget that can use paint bucket functionality on the provided image.
   const FloodFillImage(

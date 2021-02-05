@@ -1,3 +1,3 @@
-## [0.0.5] - Feb 5 2021.
+## [0.0.6] - Feb 5 2021.
 
-* update readme.
+* added touch position to callback in `onFloodFillStart` parameter.

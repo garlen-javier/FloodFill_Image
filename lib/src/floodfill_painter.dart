@@ -17,7 +17,7 @@ class FloodFillPainter extends CustomPainter {
   ValueNotifier<Offset> notifier;
   ui.Image image;
   Color fillColor;
-  Function(ui.Image) onFloodFillStart;
+  Function(Offset,ui.Image) onFloodFillStart;
   Function(ui.Image) onFloodFillEnd;
   Function onInitialize;
 
@@ -90,7 +90,10 @@ class FloodFillPainter extends CustomPainter {
         alpha <= (touchA + 100);
   }
 
-  void fill(int pX, int pY) async {
+  void fill(Offset position) async {
+    int pX = position.dx.toInt();
+    int pY = position.dy.toInt();
+
     if (_filler == null) return;
 
     if (pX < 0 || pY < 0) return;
@@ -98,7 +101,7 @@ class FloodFillPainter extends CustomPainter {
     int touchColor = _filler.image.getPixelSafe(pX, pY);
     if (_checkAvoidColor(touchColor)) return;
 
-    if (onFloodFillStart != null) onFloodFillStart(image);
+    if (onFloodFillStart != null) onFloodFillStart(position,image);
 
     _filler.setTargetColor(touchColor);
     await _filler.floodFill(pX, pY);
@@ -110,7 +113,7 @@ class FloodFillPainter extends CustomPainter {
       ui.PixelFormat.rgba8888,
       (output) async {
         image = output;
-        notifier.value = Offset(pX.toDouble(), pY.toDouble());
+        notifier.value = position;
         if (onFloodFillEnd != null) onFloodFillEnd(output);
       },
     );
@@ -118,7 +121,7 @@ class FloodFillPainter extends CustomPainter {
 
   @override
   bool hitTest(Offset position) {
-    if (_isFillActive) fill(position.dx.toInt(), position.dy.toInt());
+    if (_isFillActive) fill(position);
     return super.hitTest(position);
   }
 

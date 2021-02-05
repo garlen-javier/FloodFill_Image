@@ -35,8 +35,8 @@ FloodFillImage(
 | `height` | int | Height of the image. Parent widget height will be prioritize if it's provided and less than the image height. |
 | `alignment` | AlignmentGeometry | Alignment of the image. |
 | `loadingWidget` | Widget | Widget to show while the image is being processed on initialization. <br>It uses `CircularProgressIndicator` by default. |
-| `onFloodFillStart` | Function(Image) | Callback function that returns an `Image` from *dart:ui* when flood fill starts. |
-| `onFloodFillEnd` | Function(Image) | Callback function that returns an `Image` from *dart:ui* when flood fill ended. |
+| `onFloodFillStart` | Function(Offset position,Image image) | Callback function that returns the touch position and an `Image` from *dart:ui* when flood fill starts. |
+| `onFloodFillEnd` | Function(Image image) | Callback function that returns an `Image` from *dart:ui* when flood fill ended. |
 
 ## Coffee
 
