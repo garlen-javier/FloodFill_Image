@@ -40,6 +40,7 @@ class FloodFillImage extends StatefulWidget {
   final Widget loadingWidget;
 
   /// Callback function that returns the touch position and an [Image] from *dart:ui* when flood fill starts.
+  /// <br>**Note:** Touch coordinate is relative to the image dimension.
   final Function(Offset position,ui.Image image) onFloodFillStart;
 
   /// Callback function that returns an [Image] from *dart:ui* when flood fill ended.
