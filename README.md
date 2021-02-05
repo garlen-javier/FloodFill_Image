@@ -24,7 +24,7 @@ FloodFillImage(
 
 ## Parameters
 
-| Parameter | Type | Description |
+| Name | Type | Description |
 |---|---|---|
 | `imageProvider` | ImageProvider | The image to display via ImageProvider. <br>You can use `AssetImage` or `NetworkImage`. |
 | `fillColor` | Color | Color use for filling the area. |
