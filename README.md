@@ -14,7 +14,7 @@ Kindly like:+1: the package at [pub dev](https://pub.dev/packages/floodfill_imag
 
 ## Usage
 
-```
+```dart
 FloodFillImage(
     imageProvider: AssetImage("assets/dog.jpg"),
     fillColor: Colors.amber,
