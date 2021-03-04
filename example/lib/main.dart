@@ -20,8 +20,9 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-  final String title;
+  final String? title;
+  MyHomePage({Key? key, this.title}) : super(key: key);
+
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
@@ -33,7 +34,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text(widget.title!),
       ),
       body: Center(
         child: SingleChildScrollView(
@@ -49,32 +50,32 @@ class _MyHomePageState extends State<MyHomePage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  FlatButton(
+                  TextButton(
                     onPressed: () {
                       setState(() {
                         _fillColor = Colors.brown;
                       });
                     },
-                    child: Text("Brown"),
-                    color: Colors.brown,
+                    child: Text("Brown",style: TextStyle(color: Colors.black),),
+                    style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.brown)),
                   ),
-                  FlatButton(
+                  TextButton(
                     onPressed: () {
                       setState(() {
                         _fillColor = Colors.amber;
                       });
                     },
-                    child: Text("Amber"),
-                    color: Colors.amber,
+                    child: Text("Amber",style: TextStyle(color: Colors.black),),
+                    style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.amber)),
                   ),
-                  FlatButton(
+                  TextButton(
                     onPressed: () {
                       setState(() {
                         _fillColor = Colors.cyan;
                       });
                     },
-                    child: Text("Cyan"),
-                    color: Colors.cyan,
+                    child: Text("Cyan",style: TextStyle(color: Colors.black),),
+                    style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.cyan)),
                   ),
                 ],
               )

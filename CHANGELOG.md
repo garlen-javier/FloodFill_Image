@@ -5,3 +5,9 @@
 ## [0.0.7] - Feb 6 2021.
 
 * update readme.
+
+## [0.0.8] - March 4 2021.
+
+* Update to Flutter 2.
+* Migrate to Null Safety
+* Isolate Custom Paint with RepaintBoundary

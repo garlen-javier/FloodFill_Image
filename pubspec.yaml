@@ -1,16 +1,16 @@
 name: floodfill_image
 description: Flutter widget that can use paint bucket functionality on the provided image.
-version: 0.0.7
+version: 0.0.8
 homepage: https://github.com/garlen-javier/FloodFill_Image
 
 environment:
-  sdk: ">=2.7.0 <3.0.0"
+  sdk: ">=2.12.0 <3.0.0"
   flutter: ">=1.17.0"
 
 dependencies:
   flutter:
     sdk: flutter
-  image: ^2.1.19
+  image: ^3.0.1
 
 dev_dependencies:
   flutter_test:

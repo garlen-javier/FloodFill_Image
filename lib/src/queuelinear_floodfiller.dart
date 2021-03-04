@@ -9,7 +9,7 @@ import 'dart:ui';
 import 'package:image/image.dart' as img;
 
 class QueueLinearFloodFiller {
-  img.Image image;
+  img.Image? image;
   int _width = 0;
   int _height = 0;
   int _cachedWidth = -1;
@@ -17,21 +17,21 @@ class QueueLinearFloodFiller {
   int _fillColor = 0;
   int _tolerance = 8;
   List<int> _startColor = [0, 0, 0, 0];
-  List<bool> _pixelsChecked;
-  Queue<_FloodFillRange> _ranges;
+  List<bool>? _pixelsChecked;
+  Queue<_FloodFillRange>? _ranges;
 
   QueueLinearFloodFiller(img.Image imgVal, int newColor) {
     image = imgVal;
-    _width = image.width;
-    _height = image.height;
+    _width = image!.width;
+    _height = image!.height;
     setFillColor(newColor);
   }
 
   void resize(Size size) {
     if (_cachedWidth != size.width.toInt() || _cachedHeight != size.height.toInt()) {
-      image = img.copyResize(image, width: size.width.toInt(), height: size.height.toInt());
-      _width = image.width;
-      _height = image.height;
+      image = img.copyResize(image!, width: size.width.toInt(), height: size.height.toInt());
+      _width = image!.width;
+      _height = image!.height;
       _cachedWidth = _width;
       _cachedHeight = _height;
     }
@@ -71,7 +71,7 @@ class QueueLinearFloodFiller {
 
     if (_startColor[0] == 0) {
       // ***Get starting color.
-      int startPixel = image.getPixelSafe(x, y);
+      int startPixel = image!.getPixelSafe(x, y);
 
       _startColor[0] = img.getRed(startPixel);
       _startColor[1] = img.getGreen(startPixel);
@@ -85,9 +85,9 @@ class QueueLinearFloodFiller {
     // queue
     _FloodFillRange range;
 
-    while (_ranges.length > 0) {
+    while (_ranges!.length > 0) {
       // **Get Next Range Off the Queue
-      range = _ranges.removeFirst();
+      range = _ranges!.removeFirst();
 
       // **Check Above and Below Each Pixel in the Floodfill Range
       int downPxIdx = (_width * (range.y + 1)) + range.startX;
@@ -100,7 +100,7 @@ class QueueLinearFloodFiller {
         // if we're not above the top of the bitmap and the pixel above
         // this one is within the color tolerance
 
-        if (range.y > 0 && (!_pixelsChecked[upPxIdx]) && _checkPixel(i, upY)) {
+        if (range.y > 0 && (!_pixelsChecked![upPxIdx]) && _checkPixel(i, upY)) {
           _linearFill(i, upY);
         }
 
@@ -108,7 +108,7 @@ class QueueLinearFloodFiller {
         // if we're not below the bottom of the bitmap and the pixel
         // below this one is within the color tolerance
         if (range.y < (_height - 1) &&
-            (!_pixelsChecked[downPxIdx]) &&
+            (!_pixelsChecked![downPxIdx]) &&
             _checkPixel(i, downY)) {
           _linearFill(i, downY);
         }
@@ -133,10 +133,10 @@ class QueueLinearFloodFiller {
     while (true) {
       // **fill with the color
       //pixels[pxIdx] = _fillColor;
-      image.setPixelSafe(lFillLoc, y, _fillColor);
+      image?.setPixelSafe(lFillLoc, y, _fillColor);
 
       // **indicate that this pixel has already been checked and filled
-      _pixelsChecked[pxIdx] = true;
+      _pixelsChecked![pxIdx] = true;
 
       // **de-increment
       lFillLoc--; // de-increment counter
@@ -144,7 +144,7 @@ class QueueLinearFloodFiller {
 
       // **exit loop if we're at edge of bitmap or color area
       if (lFillLoc < 0 ||
-          (_pixelsChecked[pxIdx]) ||
+          (_pixelsChecked![pxIdx]) ||
           !_checkPixel(lFillLoc, y)) {
         break;
       }
@@ -158,10 +158,10 @@ class QueueLinearFloodFiller {
 
     while (true) {
       // **fill with the color
-      image.setPixelSafe(rFillLoc, y, _fillColor);
+      image?.setPixelSafe(rFillLoc, y, _fillColor);
 
       // **indicate that this pixel has already been checked and filled
-      _pixelsChecked[pxIdx] = true;
+      _pixelsChecked![pxIdx] = true;
 
       // **increment
       rFillLoc++; // increment counter
@@ -169,7 +169,7 @@ class QueueLinearFloodFiller {
 
       // **exit loop if we're at edge of bitmap or color area
       if (rFillLoc >= _width ||
-          _pixelsChecked[pxIdx] ||
+          _pixelsChecked![pxIdx] ||
           !_checkPixel(rFillLoc, y)) {
         break;
       }
@@ -178,12 +178,12 @@ class QueueLinearFloodFiller {
     rFillLoc--;
     // add range to queue
     _FloodFillRange r = new _FloodFillRange(lFillLoc, rFillLoc, y);
-    _ranges.add(r);
+    _ranges?.add(r);
   }
 
   // Sees if a pixel is within the color tolerance range.
   bool _checkPixel(int x, int y) {
-    int pixelColor = image.getPixelSafe(x, y);
+    int pixelColor = image!.getPixelSafe(x, y);
     int red = img.getRed(pixelColor);
     int green = img.getGreen(pixelColor);
     int blue = img.getBlue(pixelColor);
@@ -202,9 +202,9 @@ class QueueLinearFloodFiller {
 
 // Represents a linear range to be filled and branched from.
 class _FloodFillRange {
-  int startX;
-  int endX;
-  int y;
+  int startX = -1;
+  int endX = -1;
+  int y = - 1;
 
   _FloodFillRange(int startX, int endX, int yPos) {
     this.startX = startX;
